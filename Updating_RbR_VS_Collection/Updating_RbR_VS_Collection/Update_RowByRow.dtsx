@@ -1,0 +1,1145 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/7/2019 8:40:13 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CASA-21ZBNN2"
+  DTS:CreatorName="ADM\aaa"
+  DTS:DTSID="{6C48818F-AF01-47DF-AFAD-42EC8FEF54FB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3026.27"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="Update_RowByRow"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{77A6368F-33D4-4720-B3FB-BA0FDA2660E5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AdventureWorksDW2016]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{44F18FBA-1B6F-45BE-B9E5-52942D05BC5C}"
+      DTS:ObjectName="AdventureWorksDW2016">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=CASA-21ZBNN2\SSASTABULAR2016;Initial Catalog=AdventureWorksDW2016;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT01 - Update RowByRow"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{5F1109BE-3B9D-42F7-A80A-5F02E526BCB7}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT01 - Update RowByRow"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonne dérivée;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Crée de nouvelles valeurs de colonne en appliquant des expressions aux colonnes d'entrée de transformation. Créez de nouvelles colonnes ou remplacez celles qui existent déjà. Par exemple, concaténez les valeurs de la colonne 'prénom' et de la colonne 'nom' pour créer une colonne 'nom complet'."
+              name="DRV COL 01 - Calculate Title_Suffix_Gender new values"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Inputs[Entrée de colonne dérivée]"
+                  description="Entrée de la transformation de colonnes dérivées"
+                  name="Entrée de colonne dérivée">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Inputs[Entrée de colonne dérivée].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Inputs[Entrée de colonne dérivée].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[Gender]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Outputs[Sortie de colonne dérivée]"
+                  description="Sortie par défaut de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  name="Sortie de colonne dérivée"
+                  synchronousInputId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Outputs[Sortie de colonne dérivée].Columns[Title Drv]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="3"
+                      lineageId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Outputs[Sortie de colonne dérivée].Columns[Title Drv]"
+                      name="Title Drv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">"New"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"New"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Outputs[Sortie de colonne dérivée].Columns[First Name Drv]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="55"
+                      lineageId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Outputs[Sortie de colonne dérivée].Columns[First Name Drv]"
+                      name="First Name Drv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">(#{Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[Gender]} == "M" ? "Mr. " + #{Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[FirstName]} : "Mrs. " + #{Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[FirstName]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(Gender == "M" ? "Mr. " + FirstName : "Mrs. " + FirstName)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Outputs[Sortie de colonne dérivée].Columns[Suffix Drv]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="3"
+                      lineageId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Outputs[Sortie de colonne dérivée].Columns[Suffix Drv]"
+                      name="Suffix Drv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">"Tag"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Tag"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Outputs[Sortie d'erreur de colonne dérivée]"
+                  description="Sortie d'erreur de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de colonne dérivée"
+                  synchronousInputId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row)"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Commande OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;2"
+              description="Exécute une instruction SQL pour chaque ligne d'un flux de données. Par exemple, appelez une procédure stockée 'nouvelle configuration d'employé' pour chaque ligne de la table 'nouveaux employés'. Remarque : l'exécution d'une instruction SQL pour chaque ligne d'un flux de données volumineux peut prendre beaucoup de temps."
+              name="OLE DB CMD 01 - Update Customer Data (Row by row)"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimCustomerDemo]
+   SET [Title] = ?
+      ,[Suffix] = ?
+      ,[FirstName] = ?
+ WHERE [CustomerKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AdventureWorksDW2016]"
+                  connectionManagerRefId="Package.ConnectionManagers[AdventureWorksDW2016]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Inputs[Entrée de commande OLE DB]"
+                  errorOrTruncationOperation="Exécution de commande"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de commande OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Inputs[Entrée de commande OLE DB].Columns[Title Drv]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="Title Drv"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Inputs[Entrée de commande OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Outputs[Sortie de colonne dérivée].Columns[Title Drv]" />
+                    <inputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Inputs[Entrée de commande OLE DB].Columns[Suffix Drv]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="Suffix Drv"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Inputs[Entrée de commande OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Outputs[Sortie de colonne dérivée].Columns[Suffix Drv]" />
+                    <inputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Inputs[Entrée de commande OLE DB].Columns[First Name Drv]"
+                      cachedDataType="wstr"
+                      cachedLength="55"
+                      cachedName="First Name Drv"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Inputs[Entrée de commande OLE DB].ExternalColumns[Param_2]"
+                      lineageId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Outputs[Sortie de colonne dérivée].Columns[First Name Drv]" />
+                    <inputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Inputs[Entrée de commande OLE DB].Columns[CustomerKey]"
+                      cachedDataType="i4"
+                      cachedName="CustomerKey"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Inputs[Entrée de commande OLE DB].ExternalColumns[Param_3]"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[CustomerKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Inputs[Entrée de commande OLE DB].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="8"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Inputs[Entrée de commande OLE DB].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="10"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Inputs[Entrée de commande OLE DB].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Inputs[Entrée de commande OLE DB].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Outputs[Sortie de commande OLE DB]"
+                  exclusionGroup="1"
+                  name="Sortie de commande OLE DB"
+                  synchronousInputId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Inputs[Entrée de commande OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Outputs[Sortie d'erreur de commande OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de commande OLE DB"
+                  synchronousInputId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Inputs[Entrée de commande OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="OLE DB SRC 01 - Get Customer Data"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+       [CustomerKey]
+      ,[GeographyKey]
+      ,[CustomerAlternateKey]
+      ,[Title]
+      ,[FirstName]
+      ,[MiddleName]
+      ,[LastName]
+      ,[NameStyle]
+      ,[BirthDate]
+      ,[MaritalStatus]
+      ,[Suffix]
+      ,[Gender]
+      ,[EmailAddress]
+      ,[YearlyIncome]
+      ,[TotalChildren]
+      ,[NumberChildrenAtHome]
+      ,[EnglishEducation]
+      ,[SpanishEducation]
+      ,[FrenchEducation]
+      ,[EnglishOccupation]
+      ,[SpanishOccupation]
+      ,[FrenchOccupation]
+      ,[HouseOwnerFlag]
+      ,[NumberCarsOwned]
+      ,[AddressLine1]
+      ,[AddressLine2]
+      ,[Phone]
+      ,[DateFirstPurchase]
+      ,[CommuteDistance]
+FROM [dbo].[DimCustomerDemo]</property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AdventureWorksDW2016]"
+                  connectionManagerRefId="Package.ConnectionManagers[AdventureWorksDW2016]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[CustomerKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[CustomerKey]"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[CustomerKey]"
+                      name="CustomerKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[GeographyKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[GeographyKey]"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[GeographyKey]"
+                      name="GeographyKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[CustomerAlternateKey]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[CustomerAlternateKey]"
+                      length="15"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[CustomerAlternateKey]"
+                      name="CustomerAlternateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[Title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[Title]"
+                      length="8"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[Title]"
+                      name="Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[FirstName]"
+                      length="50"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[MiddleName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[MiddleName]"
+                      length="50"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[MiddleName]"
+                      name="MiddleName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[LastName]"
+                      length="50"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[NameStyle]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[NameStyle]"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[NameStyle]"
+                      name="NameStyle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[BirthDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[BirthDate]"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[MaritalStatus]"
+                      length="1"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[MaritalStatus]"
+                      name="MaritalStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[Suffix]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[Suffix]"
+                      length="10"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[Suffix]"
+                      name="Suffix"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[Gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[Gender]"
+                      length="1"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[EmailAddress]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[EmailAddress]"
+                      length="50"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[EmailAddress]"
+                      name="EmailAddress"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[YearlyIncome]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[YearlyIncome]"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[YearlyIncome]"
+                      name="YearlyIncome"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[TotalChildren]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[TotalChildren]"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[TotalChildren]"
+                      name="TotalChildren"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[NumberChildrenAtHome]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[NumberChildrenAtHome]"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[NumberChildrenAtHome]"
+                      name="NumberChildrenAtHome"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[EnglishEducation]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[EnglishEducation]"
+                      length="40"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[EnglishEducation]"
+                      name="EnglishEducation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[SpanishEducation]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[SpanishEducation]"
+                      length="40"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[SpanishEducation]"
+                      name="SpanishEducation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[FrenchEducation]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[FrenchEducation]"
+                      length="40"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[FrenchEducation]"
+                      name="FrenchEducation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[EnglishOccupation]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[EnglishOccupation]"
+                      length="100"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[EnglishOccupation]"
+                      name="EnglishOccupation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[SpanishOccupation]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[SpanishOccupation]"
+                      length="100"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[SpanishOccupation]"
+                      name="SpanishOccupation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[FrenchOccupation]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[FrenchOccupation]"
+                      length="100"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[FrenchOccupation]"
+                      name="FrenchOccupation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[HouseOwnerFlag]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[HouseOwnerFlag]"
+                      length="1"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[HouseOwnerFlag]"
+                      name="HouseOwnerFlag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[NumberCarsOwned]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[NumberCarsOwned]"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[NumberCarsOwned]"
+                      name="NumberCarsOwned"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[AddressLine1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[AddressLine1]"
+                      length="120"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[AddressLine1]"
+                      name="AddressLine1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[AddressLine2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[AddressLine2]"
+                      length="120"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[AddressLine2]"
+                      name="AddressLine2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[Phone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[Phone]"
+                      length="20"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[Phone]"
+                      name="Phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[DateFirstPurchase]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[DateFirstPurchase]"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[DateFirstPurchase]"
+                      name="DateFirstPurchase"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[CommuteDistance]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[CommuteDistance]"
+                      length="15"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].Columns[CommuteDistance]"
+                      name="CommuteDistance"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[GeographyKey]"
+                      dataType="i4"
+                      name="GeographyKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[CustomerAlternateKey]"
+                      dataType="wstr"
+                      length="15"
+                      name="CustomerAlternateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="8"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="50"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[MiddleName]"
+                      dataType="wstr"
+                      length="50"
+                      name="MiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="50"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[NameStyle]"
+                      dataType="bool"
+                      name="NameStyle" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[Suffix]"
+                      dataType="wstr"
+                      length="10"
+                      name="Suffix" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[EmailAddress]"
+                      dataType="wstr"
+                      length="50"
+                      name="EmailAddress" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[YearlyIncome]"
+                      dataType="cy"
+                      name="YearlyIncome" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[TotalChildren]"
+                      dataType="ui1"
+                      name="TotalChildren" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[NumberChildrenAtHome]"
+                      dataType="ui1"
+                      name="NumberChildrenAtHome" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[EnglishEducation]"
+                      dataType="wstr"
+                      length="40"
+                      name="EnglishEducation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[SpanishEducation]"
+                      dataType="wstr"
+                      length="40"
+                      name="SpanishEducation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[FrenchEducation]"
+                      dataType="wstr"
+                      length="40"
+                      name="FrenchEducation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[EnglishOccupation]"
+                      dataType="wstr"
+                      length="100"
+                      name="EnglishOccupation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[SpanishOccupation]"
+                      dataType="wstr"
+                      length="100"
+                      name="SpanishOccupation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[FrenchOccupation]"
+                      dataType="wstr"
+                      length="100"
+                      name="FrenchOccupation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[HouseOwnerFlag]"
+                      dataType="wstr"
+                      length="1"
+                      name="HouseOwnerFlag" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[NumberCarsOwned]"
+                      dataType="ui1"
+                      name="NumberCarsOwned" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[AddressLine1]"
+                      dataType="wstr"
+                      length="120"
+                      name="AddressLine1" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[AddressLine2]"
+                      dataType="wstr"
+                      length="120"
+                      name="AddressLine2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="20"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[DateFirstPurchase]"
+                      dataType="dbDate"
+                      name="DateFirstPurchase" />
+                    <externalMetadataColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB].ExternalColumns[CommuteDistance]"
+                      dataType="wstr"
+                      length="15"
+                      name="CommuteDistance" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[CustomerKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[CustomerKey]"
+                      name="CustomerKey" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[GeographyKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[GeographyKey]"
+                      name="GeographyKey" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[CustomerAlternateKey]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[CustomerAlternateKey]"
+                      name="CustomerAlternateKey" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[Title]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[FirstName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[MiddleName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[MiddleName]"
+                      name="MiddleName" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[LastName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[NameStyle]"
+                      dataType="bool"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[NameStyle]"
+                      name="NameStyle" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[BirthDate]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[MaritalStatus]"
+                      name="MaritalStatus" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[Suffix]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[Suffix]"
+                      name="Suffix" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[EmailAddress]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[EmailAddress]"
+                      name="EmailAddress" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[YearlyIncome]"
+                      dataType="cy"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[YearlyIncome]"
+                      name="YearlyIncome" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[TotalChildren]"
+                      dataType="ui1"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[TotalChildren]"
+                      name="TotalChildren" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[NumberChildrenAtHome]"
+                      dataType="ui1"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[NumberChildrenAtHome]"
+                      name="NumberChildrenAtHome" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[EnglishEducation]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[EnglishEducation]"
+                      name="EnglishEducation" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[SpanishEducation]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[SpanishEducation]"
+                      name="SpanishEducation" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[FrenchEducation]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[FrenchEducation]"
+                      name="FrenchEducation" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[EnglishOccupation]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[EnglishOccupation]"
+                      name="EnglishOccupation" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[SpanishOccupation]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[SpanishOccupation]"
+                      name="SpanishOccupation" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[FrenchOccupation]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[FrenchOccupation]"
+                      name="FrenchOccupation" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[HouseOwnerFlag]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[HouseOwnerFlag]"
+                      name="HouseOwnerFlag" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[NumberCarsOwned]"
+                      dataType="ui1"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[NumberCarsOwned]"
+                      name="NumberCarsOwned" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[AddressLine1]"
+                      dataType="wstr"
+                      length="120"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[AddressLine1]"
+                      name="AddressLine1" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[AddressLine2]"
+                      dataType="wstr"
+                      length="120"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[AddressLine2]"
+                      name="AddressLine2" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[Phone]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[Phone]"
+                      name="Phone" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[DateFirstPurchase]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[DateFirstPurchase]"
+                      name="DateFirstPurchase" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[CommuteDistance]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[CommuteDistance]"
+                      name="CommuteDistance" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT01 - Update RowByRow.Paths[Sortie de colonne dérivée]"
+              endId="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row).Inputs[Entrée de commande OLE DB]"
+              name="Sortie de colonne dérivée"
+              startId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Outputs[Sortie de colonne dérivée]" />
+            <path
+              refId="Package\DFT01 - Update RowByRow.Paths[Sortie de source OLE DB]"
+              endId="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values.Inputs[Entrée de colonne dérivée]"
+              name="Sortie de source OLE DB"
+              startId="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="209,42"
+          Id="Package\DFT01 - Update RowByRow"
+          TopLeft="193,129" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT01 - Update RowByRow">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="252,42"
+          Id="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data"
+          TopLeft="198,69" />
+        <NodeLayout
+          Size="340,42"
+          Id="Package\DFT01 - Update RowByRow\OLE DB CMD 01 - Update Customer Data (Row by row)"
+          TopLeft="162,270" />
+        <NodeLayout
+          Size="341,42"
+          Id="Package\DFT01 - Update RowByRow\DRV COL 01 - Calculate Title_Suffix_Gender new values"
+          TopLeft="158,169" />
+        <EdgeLayout
+          Id="Package\DFT01 - Update RowByRow.Paths[Sortie de source OLE DB]"
+          TopLeft="326.25,111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT01 - Update RowByRow.Paths[Sortie de colonne dérivée]"
+          TopLeft="330.25,211">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT01 - Update RowByRow\OLE DB SRC 01 - Get Customer Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
